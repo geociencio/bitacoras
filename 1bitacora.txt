@@ -1,0 +1,74 @@
+En este tutorial, explicaremos como construir un SHP de puntos con un valor Z
+para cada uno a partir de un archivo CSV (fichero de texto separado por comas).
+
+Para hacer este tutorial necesitaremos:
+
+- Un fichero CSV con los valores separados por comas, donde la primera
+fila son los nombres de las columnas:
+
+
+X,Y,Z,Value
+570373,4759206,919.00,4558.033732
+569900,4757435,395.00,10601.35443
+573725,4761400,1165.00,3594.570815
+
+
+
+- La herramienta de linea de comandos "ogr2ogr" disponible en FWTools [1].
+
+NOTAS
+
+1) Podemos crear archivos Virtual Format (.vrt) para crear otros SHP.
+ Las opciones para la creacion de archivos Virtual Format esta disponible en [2].
+ El fichero utilizado en el video contiene el siguiente código:
+ 
+<OGRVRTDataSource>
+     <OGRVRTLayer name="data">
+          <SrcDataSource relativeToVRT="1">data.dbf</SrcDataSource>
+          <SrcLayer>data</SrcLayer>
+          <GeometryType>wkbPoint25D</GeometryType>
+          <GeometryField encoding="PointFromColumns" x="X" y="Y" z="Z"/>
+     </OGRVRTLayer>
+</OGRVRTDataSource>
+
+2) El primer comando crea un fichero ".dbf" a partir del archivo CSV.
+
+ogr2ogr -f "ESRI Shapefile" [carpeta_destino] [archivo_csv]
+
+Podemos crear este fichero con la herramienta exportar tabla de gvSIG
+y saltarnos este paso.
+
+3) El segundo comando genera el SHP a partir del DBF. Es muy importante
+que la carpeta destino sea distinta a la del archivo DBF para no sobreescribirlo:
+
+ogr2ogr -f "ESRI Shapefile" [carpeta_destino] [archivo_vrt]
+
+Actualización
+
+En algunas versiones de ogr2ogr es necesario indicar el fichero dbf de
+datos dentro del archivo vrt. Si no os funciona como en el video debeis
+editar el fichero vrt incluyendo el dbf como fichero fuente de datos y
+ejecutar el siguiente comnado añadiendo el nombre del archivo shp de salida:
+
+
+ogr2ogr -f "ESRI Shapefile" [carpeta_destino\archivo.shp] [archivo_vrt]
+
+
+---------------------------------------------------------------------------
+
+### This program appends the data from one file to another. It takes two
+### arguments, f1 and f2, which should be the files used for appending.
+
+from osgeo import ogr
+import sys, subprocess
+
+#syntax for ogr2ogr w/ append: ogr2ogr -f "output format" -append outputDS inputDS
+
+def append(f1,f2):
+    
+   noExt = f1[:-4]
+    subprocess.call(["ogr2ogr","-f","GeoJSON","-append","-nln",noExt,f1,f2,"-update"])
+
+
+aqui  es una nueva linea
+
