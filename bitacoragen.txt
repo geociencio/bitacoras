@@ -1,0 +1,3 @@
+sudo apt-get install asciinema
+asciinema rec /tmp/my_rec.json
+asciinema play /tmp/my_rec.json
