@@ -1,4 +1,4 @@
-Hacer repositorio en GitHub y seguir los pasos crear archivo readme y tipo de licencia
+﻿Hacer repositorio en GitHub y seguir los pasos crear archivo readme y tipo de licencia
 copiar la direccion URL de la carpeta en donde dice CLONAR
 En la Pc ir a la carpeta donde se va a alojar el directorio y habrir una terminal con cmd,exe en en dicha carpeta
 escribir el comando siguiente
@@ -8,7 +8,12 @@ git clone https://github.com/geociencio/turepositorio.git
 se creara la carpeta con los archivos readme y licencia y un directorio .git
 crear archivos o copiar los que se deseeen dar seguimiento
 
+git config --global user.name "Your Name Comes Here"
+git config --global user.email you@yourdomain.example.com
+
+
 el siguiente comando te dara lo que no se ha dado seguimiento
+
 git status 
 
 el comando add agregara los archivos editados
@@ -22,3 +27,5 @@ git commit "se afrego el archivo tal"
 
 el comando push sube los cambios a github
 git push 
+
+
