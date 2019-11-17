@@ -4,5 +4,5 @@ sudo vim /etc/apt/sources.list
 cd /opt/pycharm-*/bin
 ./pycharm.sh
 
-
+flatpak run org.gimp.GIMP//stable
 
