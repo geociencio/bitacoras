@@ -1,3 +1,4 @@
 comandos mas usados
 
 sudo vim /etc/apt/sources.list
+cd /opt/pycharm-*/bin
