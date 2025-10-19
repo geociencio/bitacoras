@@ -1,1 +1,4 @@
+comandos para usar yt-dlp
+
+para bajar solo los audios en mp3
 yt-dlp -I 1 -f 140 -t mp3 --restrict-filenames -o '%(title)s.%(ext)s' 'AGREGAR URL AQUI'
